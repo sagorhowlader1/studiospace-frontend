@@ -108,11 +108,9 @@ export function AddNewStudioPage() {
             const res = await fetch("http://localhost:8000/add-new-studio", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                // body: JSON.stringify(formData),
                 body: JSON.stringify(studio),
             })
             if (!res.ok) throw new Error("Failed to create studio")
-            console.log("New studio payload:", studio)
 
             toast.add({
                 type: "success",

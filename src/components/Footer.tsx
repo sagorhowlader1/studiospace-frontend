@@ -26,10 +26,11 @@ const trustBadges = [
 ]
 
 const exploreLinks = [
-  { label: "All Workspaces", href: "/studios" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Host Your Studio", href: "/become-a-host" },
-  { label: "Booking History", href: "/bookings" },
+  { label: "Home", href: "/" },
+  { label: "Explore Studios", href: "/explore-studios" },
+  // { label: "All Workspaces", href: "/studios" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "About Us", href: "/#about-us" },
 ]
 
 const categoryLinks = [
@@ -39,6 +40,10 @@ const categoryLinks = [
   { label: "Music & Dolby Suites", href: "/studios?category=music" },
   { label: "Art & Ceramic Workshops", href: "/studios?category=art" },
 ]
+
+
+
+const date = new Date().getFullYear()
 
 function XIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -222,6 +227,15 @@ export function Footer() {
                   support@studiospace.io
                 </a>
               </p>
+            </div>
+          </div>
+
+          <div className="text-xs font-bold tracking-widest text-foreground my-10 border-t border-border ">
+            <div className="flex justify-between items-center mt-8">
+              <h3>© {date} StudioSpace. All rights reserved.</h3>
+              <Link href="/" className="flex justify-center items-center gap-10">
+                <p>Privacy Policy</p>
+              </Link>
             </div>
           </div>
         </div>
