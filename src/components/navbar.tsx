@@ -18,7 +18,8 @@ import {
 import { cn } from "cn"
 import { authClient } from "@/lib/auth-client"
 import { FiChevronDown } from "react-icons/fi";
-import { FaArrowRightToBracket } from "react-icons/fa6";
+import { LuBookText } from "react-icons/lu";
+import { FaArrowRightToBracket, FaClipboardList } from "react-icons/fa6";
 
 
 import {
@@ -31,7 +32,6 @@ import {
 } from "@/components/ui/popover"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import AddNewStudioPage from "@/app/add-new-studio/page"
 import { IoIosAddCircleOutline } from "react-icons/io";
 
 function NavLink({
@@ -124,7 +124,15 @@ export function Navbar() {
                     <PopoverDescription>{user?.email}</PopoverDescription>
 
                     <Link href={"/add-new-studio"} className="my-2 flex items-center gap-1"><IoIosAddCircleOutline />
-                    <AddNewStudioPage/>
+                    Add New Studio
+                    </Link>
+
+                    <Link href={"/my-studio-listings"} className="my-2 flex items-center gap-1"><FaClipboardList />
+                    My Studio Listings
+                    </Link>
+
+                    <Link href={"/my-bookings-page"} className="my-2 flex items-center gap-1"><LuBookText />
+                    My Bookings
                     </Link>
 
                     
@@ -185,32 +193,48 @@ export function Navbar() {
 
                 {
                   user ? <Popover >
-                      <PopoverTrigger render={<Button className={"cursor-pointer"} variant={"outline"}><Avatar>
-                        <AvatarImage referrerPolicy="no-referrer" src={user?.image as string} />
-                        <AvatarFallback>{user?.name.charAt(0)}</AvatarFallback>
-                      </Avatar>{user?.name.split(" ")[0]} <FiChevronDown />
-                      </Button>}>
-                      </PopoverTrigger>
-                      <PopoverContent>
-                        <PopoverHeader>
-                          <p className="text-gray-300">Signed in as</p>
-                          <PopoverTitle>{user?.name}</PopoverTitle>
-                          <PopoverDescription>{user?.email}</PopoverDescription>
-                          <Button onClick={handleSignout} className="mr-40 cursor-pointer" variant={'destructive'}><FaArrowRightToBracket />SignOut</Button>
-                        </PopoverHeader>
-                      </PopoverContent>
-                    </Popover> : <>
-                    <div className="hidden items-end gap-4 lg:flex">
-                      <NavLink href="/login" className="rounded-md px-3  py-2.5 text-foreground" onClick={() => setOpen(false)}>
-                        Login
-                      </NavLink>
+                <PopoverTrigger render={<Button className={"cursor-pointer"} variant={"outline"}><Avatar>
+                  <AvatarImage referrerPolicy="no-referrer" src={user?.image as string} />
+                  <AvatarFallback>{user?.name.charAt(0)}</AvatarFallback>
+                </Avatar>{user?.name.split(" ")[0]} <FiChevronDown />
+                </Button>}>
+                </PopoverTrigger>
+                <PopoverContent>
+                  <PopoverHeader>
+                    <p className="text-gray-300">Signed in as</p>
+                    <PopoverTitle>{user?.name}</PopoverTitle>
+                    <PopoverDescription>{user?.email}</PopoverDescription>
 
-                      <NavLink href="/registration" className="rounded-md  py-2.5 text-foreground" onClick={() => setOpen(false)}>
-                        Registration
-                      </NavLink>
-                    </div>
-                  </>
+                    <Link href={"/add-new-studio"} className="my-2 flex items-center gap-1"><IoIosAddCircleOutline />
+                    Add New Studio
+                    </Link>
+
+                    <Link href={"/my-studio-listings"} className="my-2 flex items-center gap-1"><FaClipboardList />
+                    My Studio Listings
+                    </Link>
+
+                    <Link href={"/my-bookings-page"} className="my-2 flex items-center gap-1"><LuBookText />
+                    My Bookings
+                    </Link>
+
+                    
+
+                    <Button onClick={handleSignout} className="mr-40 cursor-pointer" variant={'destructive'}><FaArrowRightToBracket /> SignOut</Button>
+                  </PopoverHeader>
+                </PopoverContent>
+              </Popover> : <>
+              <div className="hidden items-end gap-4 lg:flex">
+                <NavLink href="/login" className="rounded-md px-3  py-2.5 text-foreground" onClick={() => setOpen(false)}>
+                  Login
+                </NavLink>
+
+                <NavLink href="/registration" className="rounded-md  py-2.5 text-foreground" onClick={() => setOpen(false)}>
+                  Registration
+                </NavLink>
+              </div>
+            </>
                 }
+
                 <div className="mt-3 flex items-center gap-2">
                   <ThemeToggle />
                 </div>
