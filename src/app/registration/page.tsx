@@ -22,7 +22,7 @@ import { authClient } from "@/lib/auth-client"
 import Link from "next/link"
 import { redirect } from "next/navigation"
 
-
+import { Description} from "@heroui/react";
 
 function GoogleIcon({ className }: { className?: string }) {
     return (
@@ -119,11 +119,13 @@ export function RegistrationPage() {
 
 
                                 <Input id="password" type="password" name="password" placeholder="password" required />
+                                {/* <p className="">Must be at least 6 characters with 1 uppercase and 1 lowercase</p> */}
+                                <Description className="text-black dark:text-white">Must be at least 6 characters with 1 uppercase and 1 lowercase</Description>
                             </Field>
                             <Field>
                                 <Button
                                     type="submit"
-                                    className="h-10 w-full bg-white cursor-pointer text-ink ring-1 ring-foreground/10 hover:bg-white/90 dark:bg-white dark:text-ink"
+                                    className="h-10 w-full bg-white cursor-pointer text-ink ring-1 ring-foreground/10 hover:bg-white/90 dark:bg-black dark:text-white"
                                 >
                                     Registration
                                 </Button>
@@ -135,7 +137,7 @@ export function RegistrationPage() {
                                     </FieldSeparator>
                                 </div>
                                 <Field className="pb-6">
-                                    <Button onClick={handleGoogleRegistration} className="h-10 w-full cursor-pointer bg-white text-ink hover:bg-white/90 dark:border-input dark:bg-input/30 dark:text-foreground">
+                                    <Button onClick={handleGoogleRegistration} className="h-10 w-full bg-white cursor-pointer text-ink ring-1 ring-foreground/10 hover:bg-white/90 dark:bg-black dark:text-white">
                                         <GoogleIcon className="size-4" />
                                         Login with Google
                                     </Button>

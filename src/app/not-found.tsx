@@ -24,12 +24,6 @@ export default function NotFound() {
         >
           Back To Home
         </Button>
-        <Button
-          render={<Link href="/contact" />}
-          className="h-11 rounded-lg border border-foreground/15 bg-background px-6 text-base font-medium text-foreground hover:bg-muted dark:border-transparent dark:bg-white dark:text-ink dark:hover:bg-white/90"
-        >
-          Contact Support
-        </Button>
       </div>
     </main>
   )

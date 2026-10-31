@@ -31,6 +31,8 @@ import {
 } from "@/components/ui/popover"
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import AddNewStudioPage from "@/app/add-new-studio/page"
+import { IoIosAddCircleOutline } from "react-icons/io";
 
 function NavLink({
   href,
@@ -74,7 +76,7 @@ export function Navbar() {
   const [open, setOpen] = React.useState(false)
 
   return (
-    <header className="sticky inset-x-0 top-0 z-50 bg-gray-400">
+    <header className="sticky inset-x-0 top-0 z-50 border-b border-orange-100 bg-gray-500">
       <nav className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2">
           <span className="grid size-8 place-items-center rounded-lg bg-orange-500 text-white">
@@ -120,6 +122,13 @@ export function Navbar() {
                     <p className="text-gray-300">Signed in as</p>
                     <PopoverTitle>{user?.name}</PopoverTitle>
                     <PopoverDescription>{user?.email}</PopoverDescription>
+
+                    <Link href={"/add-new-studio"} className="my-2 flex items-center gap-1"><IoIosAddCircleOutline />
+                    <AddNewStudioPage/>
+                    </Link>
+
+                    
+
                     <Button onClick={handleSignout} className="mr-40 cursor-pointer" variant={'destructive'}><FaArrowRightToBracket /> SignOut</Button>
                   </PopoverHeader>
                 </PopoverContent>

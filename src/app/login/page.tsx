@@ -8,6 +8,7 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
+import { Description} from "@heroui/react";
 import {
     Field,
     FieldDescription,
@@ -75,24 +76,12 @@ export function LoginPage() {
         <div className="grid min-h-svh place-items-center bg-background px-4 py-10">
             <Card className="w-full max-w-sm">
                 <CardHeader className="text-center">
-                    <CardTitle className="text-xl">Welcome back</CardTitle>
-                    <CardDescription>
-                        Login with your Google account
-                    </CardDescription>
+                    <CardTitle className="text-xl">LogIn</CardTitle>
+                    
                 </CardHeader>
                 <CardContent>
                     <form onSubmit={handleLogin}>
                         <FieldGroup>
-
-                            <Field>
-                                <Button variant="outline" type="submit" className="h-10 w-full cursor-pointer bg-white text-ink hover:bg-white/90 dark:border-input dark:bg-input/30 dark:text-foreground">
-                                    <GoogleIcon className="size-4" />
-                                    Login with Google
-                                </Button>
-                            </Field>
-                            <FieldSeparator className="*:data-[slot=field-separator-content]:bg-card">
-                                Or continue with
-                            </FieldSeparator>
                             <Field>
                                 <FieldLabel htmlFor="email">Email</FieldLabel>
                                 <Input
@@ -105,11 +94,12 @@ export function LoginPage() {
                             <Field>
                                 <FieldLabel htmlFor="password">Password</FieldLabel>
                                 <Input id="password" type="password" placeholder="password" required />
+                                <Description className="text-black  dark:text-white">Must be at least 6 characters with 1 uppercase and 1 lowercase</Description>
                             </Field>
                             <Field>
                                 <Button
                                     type="submit"
-                                    className="h-10 w-full bg-white cursor-pointer text-ink ring-1 ring-foreground/10 hover:bg-white/90 dark:bg-white dark:text-ink"
+                                    className="h-10 w-full bg-white cursor-pointer text-ink ring-1 ring-foreground/10 hover:bg-white/90 dark:bg-black dark:text-white"
                                 >
                                     Login
                                 </Button>
@@ -120,7 +110,7 @@ export function LoginPage() {
                                     </FieldSeparator>
                                 </div>
                                 <Field className="pb-6">
-                                    <Button onClick={handleGoogleLogin} className="h-10 w-full cursor-pointer bg-white text-ink hover:bg-white/90 dark:border-input dark:bg-input/30 dark:text-foreground">
+                                    <Button onClick={handleGoogleLogin} className="h-10 w-full bg-white cursor-pointer text-ink ring-1 ring-foreground/10 hover:bg-white/90 dark:bg-black dark:text-white">
                                         <GoogleIcon className="size-4" />
                                         Login with Google
                                     </Button>
