@@ -3,7 +3,7 @@ import React from 'react';
 const MyStudioListingsPage = () => {
     return (
         <div>
-            MyStudioListingsPage
+            My Studio Listings Page
         </div>
     );
 };
