@@ -17,6 +17,9 @@ import {
 } from "@/components/ui/sheet"
 import { cn } from "cn"
 import { authClient } from "@/lib/auth-client"
+import { FiChevronDown } from "react-icons/fi";
+import { FaArrowRightToBracket } from "react-icons/fa6";
+
 
 import {
   Popover,
@@ -63,8 +66,11 @@ export function Navbar() {
   const { data: session } = authClient.useSession()
 
   const user = session?.user
-  console.log(user)
 
+
+  const handleSignout = () => {
+    authClient.signOut();
+  }
   const [open, setOpen] = React.useState(false)
 
   return (
@@ -97,33 +103,39 @@ export function Navbar() {
 
         {/* Actions */}
         <div className="flex items-center gap-3">
-          <div className="hidden items-end gap-4 lg:flex">
-            <NavLink href="/login" className="rounded-md px-3  py-2.5 text-foreground" onClick={() => setOpen(false)}>
-              Login
-            </NavLink>
 
-            <NavLink href="/registration" className="rounded-md  py-2.5 text-foreground" onClick={() => setOpen(false)}>
-              Registration
-            </NavLink>
-          </div>
           <ThemeToggle />
 
-          <div className="hidden items-end gap-4 lg:flex">
-            <Popover>
-              <PopoverTrigger render={<Button variant={"outline"}><Avatar>
-                <AvatarImage referrerPolicy="no-referrer" src={user?.image as string} />
-                <AvatarFallback>{user?.name.charAt(0)}</AvatarFallback>
-              </Avatar>{user?.name.split(" ")[0]} </Button>}>
-              </PopoverTrigger>
-              <PopoverContent>
-                <PopoverHeader>
-                  <p className="text-gray-300">Signed in as</p>
-                  <PopoverTitle>{user?.name}</PopoverTitle>
-                  <PopoverDescription>{user?.email}</PopoverDescription>
-                </PopoverHeader>
-              </PopoverContent>
-            </Popover>
-          </div>
+          {
+            user ? <div className="hidden items-end gap-4 lg:flex">
+              <Popover >
+                <PopoverTrigger render={<Button className={"cursor-pointer"} variant={"outline"}><Avatar>
+                  <AvatarImage referrerPolicy="no-referrer" src={user?.image as string} />
+                  <AvatarFallback>{user?.name.charAt(0)}</AvatarFallback>
+                </Avatar>{user?.name.split(" ")[0]} <FiChevronDown />
+                </Button>}>
+                </PopoverTrigger>
+                <PopoverContent>
+                  <PopoverHeader>
+                    <p className="text-gray-300">Signed in as</p>
+                    <PopoverTitle>{user?.name}</PopoverTitle>
+                    <PopoverDescription>{user?.email}</PopoverDescription>
+                    <Button onClick={handleSignout} className="mr-40 cursor-pointer" variant={'destructive'}><FaArrowRightToBracket /> SignOut</Button>
+                  </PopoverHeader>
+                </PopoverContent>
+              </Popover>
+            </div> : <>
+              <div className="hidden items-end gap-4 lg:flex">
+                <NavLink href="/login" className="rounded-md px-3  py-2.5 text-foreground" onClick={() => setOpen(false)}>
+                  Login
+                </NavLink>
+
+                <NavLink href="/registration" className="rounded-md  py-2.5 text-foreground" onClick={() => setOpen(false)}>
+                  Registration
+                </NavLink>
+              </div>
+            </>
+          }
 
 
           {/* Mobile menu */}
@@ -162,20 +174,34 @@ export function Navbar() {
                   Registration
                 </NavLink>
 
-                <Popover>
-                  <PopoverTrigger render={<Avatar>
-                    <AvatarImage referrerPolicy="no-referrer" src={user?.image as string} />
-                    <AvatarFallback>{user?.name.charAt(0)}</AvatarFallback>
-                  </Avatar>}>
-                  </PopoverTrigger>
-                  <PopoverContent>
-                    <PopoverHeader>
-                      <p className="text-gray-300">Signed in as</p>
-                      <PopoverTitle>{user?.name}</PopoverTitle>
-                      <PopoverDescription>{user?.email}</PopoverDescription>
-                    </PopoverHeader>
-                  </PopoverContent>
-                </Popover>
+                {
+                  user ? <Popover >
+                      <PopoverTrigger render={<Button className={"cursor-pointer"} variant={"outline"}><Avatar>
+                        <AvatarImage referrerPolicy="no-referrer" src={user?.image as string} />
+                        <AvatarFallback>{user?.name.charAt(0)}</AvatarFallback>
+                      </Avatar>{user?.name.split(" ")[0]} <FiChevronDown />
+                      </Button>}>
+                      </PopoverTrigger>
+                      <PopoverContent>
+                        <PopoverHeader>
+                          <p className="text-gray-300">Signed in as</p>
+                          <PopoverTitle>{user?.name}</PopoverTitle>
+                          <PopoverDescription>{user?.email}</PopoverDescription>
+                          <Button onClick={handleSignout} className="mr-40 cursor-pointer" variant={'destructive'}><FaArrowRightToBracket />SignOut</Button>
+                        </PopoverHeader>
+                      </PopoverContent>
+                    </Popover> : <>
+                    <div className="hidden items-end gap-4 lg:flex">
+                      <NavLink href="/login" className="rounded-md px-3  py-2.5 text-foreground" onClick={() => setOpen(false)}>
+                        Login
+                      </NavLink>
+
+                      <NavLink href="/registration" className="rounded-md  py-2.5 text-foreground" onClick={() => setOpen(false)}>
+                        Registration
+                      </NavLink>
+                    </div>
+                  </>
+                }
                 <div className="mt-3 flex items-center gap-2">
                   <ThemeToggle />
                 </div>
