@@ -150,13 +150,13 @@ export function Banner() {
                       </p>
                       <div className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:items-center sm:gap-4">
                         <Button
-                          render={<Link href="/studios" />}
+                          render={<Link href="/explore-studios" />}
                           className="h-11 w-full rounded-lg bg-brand px-5 text-base font-semibold text-white hover:bg-brand/90 sm:w-auto sm:px-6"
                         >
                           Explore Studios
                         </Button>
                         <Button
-                          render={<Link href="/studios" />}
+                          render={<Link href="/explore-studios" />}
                           className="h-11 w-full rounded-lg border border-foreground/15 bg-background px-5 text-base font-medium text-foreground hover:bg-muted sm:w-auto sm:px-6 dark:border-transparent dark:bg-white dark:text-ink dark:hover:bg-white/90"
                         >
                           Host Your Space

@@ -53,7 +53,7 @@ function NavLink({
       onClick={onClick}
       className={cn(
         "text-sm font-medium transition-colors hover:text-brand",
-        active ? "text-brand" : "text-foreground dark:text-white",
+        active ? "text-brand" : "text-foreground",
         className,
       )}
     >
@@ -76,17 +76,17 @@ export function Navbar() {
   const [open, setOpen] = React.useState(false)
 
   return (
-    <header className="sticky inset-x-0 top-0 z-50 border-b border-orange-100 bg-gray-500">
+    <header className="bg-background dark:bg-ink sticky inset-x-0 top-0 z-50 border-b border-border">
       <nav className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2">
-          <span className="grid size-8 place-items-center rounded-lg bg-orange-500 text-white">
+          <span className="bg-brand grid size-8 place-items-center rounded-lg text-white">
             <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="size-5">
               <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="2" />
               <circle cx="12" cy="12" r="3" fill="currentColor" />
             </svg>
           </span>
           <span className="text-lg font-bold tracking-tight text-foreground">
-            Studio<span className="text-orange-500">Space</span>
+            Studio<span className="text-brand">Space</span>
           </span>
         </Link>
 
@@ -158,7 +158,7 @@ export function Navbar() {
           {/* Mobile menu */}
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger
-              className="inline-flex size-10 items-center justify-center rounded-lg text-white lg:hidden"
+              className="text-foreground inline-flex size-10 items-center justify-center rounded-lg lg:hidden"
               aria-label="Open menu"
             >
               <Menu className="size-6" />
@@ -166,7 +166,7 @@ export function Navbar() {
             <SheetContent side="right" className="w-72 gap-0">
               <SheetHeader className="border-b border-border">
                 <SheetTitle
-                  render={<StudioSpaceLogo className="[&_span:last-child]:text-xl [&_span:last-child]:text-ink" />}
+                  render={<StudioSpaceLogo className="[&_span:last-child]:text-xl [&_span:last-child]:text-foreground" />}
                 />
               </SheetHeader>
               <nav className="flex flex-col gap-1 p-4">
