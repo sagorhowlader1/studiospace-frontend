@@ -141,7 +141,7 @@ async function CategoriesStrip() {
             <p className="text-muted-foreground mt-1 text-xs leading-relaxed line-clamp-2">
               {blurb}
             </p>
-            <Separator className="mt-auto mb-3" />
+            {/* <Separator className="mt-auto mb-3" /> */}
             <div className="text-muted-foreground flex items-center justify-between text-xs">
               <span>{spaceCount(count)}</span>
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />

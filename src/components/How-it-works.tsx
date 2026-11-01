@@ -48,13 +48,14 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="scroll-mt-24 bg-background py-20 sm:py-24">      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
+    <section id="how-it-works" className="scroll-mt-24 bg-background py-20 sm:py-24">      
+    <div className="mx-auto w-full max-w-7xl px-4 sm:px-6">
         {/* Section header */}
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-bold tracking-widest text-orange-500 uppercase sm:text-sm">
             Frictionless Booking
           </p>
-          <h2 className="mt-3 text-white  px-3 py-1.5 text-3xl font-extrabold tracking-tight  sm:mt-4 sm:text-4xl lg:text-5xl">
+          <h2 className="mt-3 px-3 py-1.5 text-3xl font-extrabold tracking-tight  sm:mt-4 sm:text-4xl lg:text-5xl">
             How StudioSpace Works
           </h2>
           <p className="mt-5 text-sm leading-relaxed text-muted-foreground sm:mt-6 sm:text-base">

@@ -29,6 +29,7 @@ export interface Studio {
   overview: string;
   ownerName: string;
   ownerEmail: string;
+  rating?: number;
 }
 
 /**
@@ -102,5 +103,26 @@ export async function fetchStudio(id: string): Promise<Studio | null> {
     return (await res.json()) as Studio;
   } catch {
     return null;
+  }
+}
+
+export const FEATURED_STUDIOS_LIMIT = 6;
+
+export async function fetchFeaturedStudios(
+  limit: number = FEATURED_STUDIOS_LIMIT,
+): Promise<Studio[]> {
+  try {
+    const res = await fetch(`${STUDIOS_API}/featured-studios?limit=${limit}`);
+    if (!res.ok) return [];
+    const data = await res.json();
+    const list: Studio[] = Array.isArray(data)
+      ? data
+      : Array.isArray(data?.studios)
+        ? data.studios
+        : [];
+    // Backend applies the sort (top-rated / newest) and limit(6) in MongoDB.
+    return list.slice(0, limit);
+  } catch {
+    return [];
   }
 }

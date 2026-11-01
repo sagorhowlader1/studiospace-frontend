@@ -34,6 +34,7 @@ import {
   type Studio,
 } from "@/lib/studio-style";
 
+
 export default async function ExploreStudiosDetailsPage({
   params,
 }: PageProps<"/explore-studios/[id]">) {
@@ -362,6 +363,7 @@ function BookingCard({
     </Card>
   );
 }
+
 
 function DetailsSkeleton() {
   return (
