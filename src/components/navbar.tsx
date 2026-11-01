@@ -108,7 +108,7 @@ export function Navbar() {
 
           <ThemeToggle />
 
-          {
+          {/* {
             user ? <div className="hidden items-end gap-4 lg:flex">
               <Popover >
                 <PopoverTrigger render={<Button className={"cursor-pointer"} variant={"outline"}><Avatar>
@@ -124,18 +124,16 @@ export function Navbar() {
                     <PopoverDescription>{user?.email}</PopoverDescription>
 
                     <Link href={"/add-new-studio"} className="my-2 flex items-center gap-1"><IoIosAddCircleOutline />
-                    Add New Studio
+                      Add New Studio
                     </Link>
 
-                    <Link href={"/my-studio-listings"} className="my-2 flex items-center gap-1"><FaClipboardList />
-                    My Studio Listings
+                    <Link href={"/my-listings"} className="my-2 flex items-center gap-1"><FaClipboardList />
+                      My Studio Listings
                     </Link>
 
-                    <Link href={"/my-bookings-page"} className="my-2 flex items-center gap-1"><LuBookText />
-                    My Bookings
+                    <Link href={"/my-bookings"} className="my-2 flex items-center gap-1"><LuBookText />
+                      My Bookings
                     </Link>
-
-                    
 
                     <Button onClick={handleSignout} className="mr-40 cursor-pointer" variant={'destructive'}><FaArrowRightToBracket /> SignOut</Button>
                   </PopoverHeader>
@@ -152,7 +150,56 @@ export function Navbar() {
                 </NavLink>
               </div>
             </>
-          }
+          } */}
+
+
+
+          {/* -----------hidden----------- */} 
+
+
+          <div className="hidden items-end gap-4 lg:flex">
+            <Popover >
+              <PopoverTrigger render={<Button className={"cursor-pointer"} variant={"outline"}><Avatar>
+                <AvatarImage referrerPolicy="no-referrer" src={user?.image as string} />
+                <AvatarFallback>{user?.name.charAt(0)}</AvatarFallback>
+              </Avatar>{user?.name.split(" ")[0]} <FiChevronDown />
+              </Button>}>
+              </PopoverTrigger>
+              <PopoverContent>
+                <PopoverHeader>
+                  <p className="text-gray-300">Signed in as</p>
+                  <PopoverTitle>{user?.name}</PopoverTitle>
+                  <PopoverDescription>{user?.email}</PopoverDescription>
+
+                  <Link href={"/add-new-studio"} className="my-2 flex items-center gap-1"><IoIosAddCircleOutline />
+                    Add New Studio
+                  </Link>
+
+                  <Link href={"/my-listings"} className="my-2 flex items-center gap-1"><FaClipboardList />
+                    My Studio Listings
+                  </Link>
+
+                  <Link href={"/my-bookings"} className="my-2 flex items-center gap-1"><LuBookText />
+                    My Bookings
+                  </Link>
+
+                  <Button onClick={handleSignout} className="mr-40 cursor-pointer" variant={'destructive'}><FaArrowRightToBracket /> SignOut</Button>
+                </PopoverHeader>
+              </PopoverContent>
+            </Popover>
+          </div>
+          <div className="hidden items-end gap-4 lg:flex">
+            <NavLink href="/login" className="rounded-md px-3  py-2.5 text-foreground" onClick={() => setOpen(false)}>
+              Login
+            </NavLink>
+
+            <NavLink href="/registration" className="rounded-md  py-2.5 text-foreground" onClick={() => setOpen(false)}>
+              Registration
+            </NavLink>
+          </div>
+
+          {/* --------------------------------- */}
+
 
 
           {/* Mobile menu */}
@@ -193,46 +240,46 @@ export function Navbar() {
 
                 {
                   user ? <Popover >
-                <PopoverTrigger render={<Button className={"cursor-pointer"} variant={"outline"}><Avatar>
-                  <AvatarImage referrerPolicy="no-referrer" src={user?.image as string} />
-                  <AvatarFallback>{user?.name.charAt(0)}</AvatarFallback>
-                </Avatar>{user?.name.split(" ")[0]} <FiChevronDown />
-                </Button>}>
-                </PopoverTrigger>
-                <PopoverContent>
-                  <PopoverHeader>
-                    <p className="text-gray-300">Signed in as</p>
-                    <PopoverTitle>{user?.name}</PopoverTitle>
-                    <PopoverDescription>{user?.email}</PopoverDescription>
+                    <PopoverTrigger render={<Button className={"cursor-pointer"} variant={"outline"}><Avatar>
+                      <AvatarImage referrerPolicy="no-referrer" src={user?.image as string} />
+                      <AvatarFallback>{user?.name.charAt(0)}</AvatarFallback>
+                    </Avatar>{user?.name.split(" ")[0]} <FiChevronDown />
+                    </Button>}>
+                    </PopoverTrigger>
+                    <PopoverContent>
+                      <PopoverHeader>
+                        <p className="text-gray-300">Signed in as</p>
+                        <PopoverTitle>{user?.name}</PopoverTitle>
+                        <PopoverDescription>{user?.email}</PopoverDescription>
 
-                    <Link href={"/add-new-studio"} className="my-2 flex items-center gap-1"><IoIosAddCircleOutline />
-                    Add New Studio
-                    </Link>
+                        <Link href={"/add-new-studio"} className="my-2 flex items-center gap-1"><IoIosAddCircleOutline />
+                          Add New Studio
+                        </Link>
 
-                    <Link href={"/my-studio-listings"} className="my-2 flex items-center gap-1"><FaClipboardList />
-                    My Studio Listings
-                    </Link>
+                        <Link href={"/my-listings"} className="my-2 flex items-center gap-1"><FaClipboardList />
+                          My Studio Listings
+                        </Link>
 
-                    <Link href={"/my-bookings-page"} className="my-2 flex items-center gap-1"><LuBookText />
-                    My Bookings
-                    </Link>
+                        <Link href={"/my-bookings"} className="my-2 flex items-center gap-1"><LuBookText />
+                          My Bookings
+                        </Link>
 
-                    
 
-                    <Button onClick={handleSignout} className="mr-40 cursor-pointer" variant={'destructive'}><FaArrowRightToBracket /> SignOut</Button>
-                  </PopoverHeader>
-                </PopoverContent>
-              </Popover> : <>
-              <div className="hidden items-end gap-4 lg:flex">
-                <NavLink href="/login" className="rounded-md px-3  py-2.5 text-foreground" onClick={() => setOpen(false)}>
-                  Login
-                </NavLink>
 
-                <NavLink href="/registration" className="rounded-md  py-2.5 text-foreground" onClick={() => setOpen(false)}>
-                  Registration
-                </NavLink>
-              </div>
-            </>
+                        <Button onClick={handleSignout} className="mr-40 cursor-pointer" variant={'destructive'}><FaArrowRightToBracket /> SignOut</Button>
+                      </PopoverHeader>
+                    </PopoverContent>
+                  </Popover> : <>
+                    <div className="hidden items-end gap-4 lg:flex">
+                      <NavLink href="/login" className="rounded-md px-3  py-2.5 text-foreground" onClick={() => setOpen(false)}>
+                        Login
+                      </NavLink>
+
+                      <NavLink href="/registration" className="rounded-md  py-2.5 text-foreground" onClick={() => setOpen(false)}>
+                        Registration
+                      </NavLink>
+                    </div>
+                  </>
                 }
 
                 <div className="mt-3 flex items-center gap-2">

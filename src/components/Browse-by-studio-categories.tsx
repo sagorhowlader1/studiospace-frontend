@@ -13,7 +13,6 @@ import {
 import type { LucideIcon } from "lucide-react";
 
 import { Card } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import { fetchStudios } from "@/lib/studio-style";
 

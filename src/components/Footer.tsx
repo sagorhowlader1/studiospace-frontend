@@ -36,11 +36,13 @@ const exploreLinks = [
 ]
 
 const categoryLinks = [
-  { label: "Photo Studios", href: "/studios?category=photo" },
-  { label: "Cinema & Sound Stages", href: "/studios?category=cinema" },
-  { label: "Podcast Lounges", href: "/studios?category=podcast" },
-  { label: "Music & Dolby Suites", href: "/studios?category=music" },
-  { label: "Art & Ceramic Workshops", href: "/studios?category=art" },
+  { label: "Photo Studios", href: "/explore-studios" },
+  { label: " Sound Stages", href: "/explore-studios" },
+  { label: "Podcast Rooms", href: "/explore-studios" },
+  { label: "Music Suites", href: "/explore-studios" },
+  { label: "Art Workshops", href: "/explore-studios" },
+  { label: "Dance Studios", href: "/explore-studios" },
+  { label: "Co-working Lofts", href: "/explore-studios" },
 ]
 
 const date = new Date().getFullYear()
