@@ -1,17 +1,10 @@
 import React, { Suspense } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  ArrowLeft,
-  Mail,
-  MapPin,
-  ShieldCheck,
-  Star,
-  Users,
-} from "lucide-react";
+import { ArrowLeft, Mail, MapPin, ShieldCheck, Star } from "lucide-react";
 
-import { BookingDialog } from "@/components/booking-dialog";
-import { FavoriteButton, StudioImage } from "@/components/studio-image";
+import { BookingCard } from "@/components/BookingCard";
+import { StudioImage } from "@/components/studio-image";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -23,7 +16,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Separator } from "@/components/ui/separator";
 import { Skeleton } from "@/components/ui/skeleton";
 import {
   CATEGORY_BADGE_COLOR,
@@ -33,7 +25,6 @@ import {
   hashString,
   type Studio,
 } from "@/lib/studio-style";
-
 
 export default async function ExploreStudiosDetailsPage({
   params,
@@ -158,10 +149,7 @@ function Header({
 function SpecsGrid({ studio }: { studio: Studio }) {
   const specs = [
     { label: "Hourly rate", value: `$${studio.hourlyRate}` },
-    {
-      label: "Security deposit",
-      value: `$${studio.securityDeposit}`,
-    },
+    { label: "Security deposit", value: `$${studio.securityDeposit}` },
     { label: "Max capacity", value: `${studio.maxCapacity} creators` },
     { label: "Amenities", value: `${studio.amenities.length} included` },
   ];
@@ -225,7 +213,11 @@ function HostCard({
           </p>
           <p className="text-muted-foreground text-xs">{ownerEmail}</p>
         </div>
-        <Button variant="outline" size="sm" render={<a href={`mailto:${ownerEmail}`} />}>
+        <Button
+          variant="outline"
+          size="sm"
+          render={<a href={`mailto:${ownerEmail}`} />}
+        >
           <Mail data-icon="inline-start" />
           Contact
         </Button>
@@ -306,64 +298,6 @@ function ReviewsSection({
     </section>
   );
 }
-
-function BookingCard({
-  studio,
-  rating,
-  reviewCount,
-}: {
-  studio: Studio;
-  rating: number;
-  reviewCount: number;
-}) {
-  return (
-    <Card className="p-4 lg:sticky lg:top-24">
-      <div className="flex flex-col gap-4">
-        <div className="flex flex-col gap-1">
-          <span className="inline-flex w-fit items-center gap-1 text-sm font-medium">
-            <Star className="size-4 fill-amber-400 text-amber-400" />
-            {rating.toFixed(1)}
-            <span className="text-muted-foreground font-normal">
-              ({reviewCount} reviews)
-            </span>
-          </span>
-          <p>
-            <span className="text-3xl font-semibold">${studio.hourlyRate}</span>
-            <span className="text-muted-foreground text-sm"> /hour</span>
-          </p>
-        </div>
-        <Separator />
-        <div className="flex flex-col gap-3 text-sm">
-          <p className="flex items-center justify-between">
-            <ShieldCheck className="text-muted-foreground size-4" />
-            <span className="text-muted-foreground">Security deposit</span>
-            <span className="font-medium">${studio.securityDeposit}</span>
-          </p>
-          <p className="flex items-center justify-between">
-            <Users className="text-muted-foreground size-4" />
-            <span className="text-muted-foreground">Max capacity</span>
-            <span className="font-medium">{studio.maxCapacity} creators</span>
-          </p>
-        </div>
-        <Separator />
-        <BookingDialog
-          studioId={studio._id}
-          title={studio.title}
-          hourlyRate={studio.hourlyRate}
-          securityDeposit={studio.securityDeposit}
-          className="w-full"
-        />
-        <div className="flex justify-end">
-          <FavoriteButton />
-        </div>
-        <p className="text-muted-foreground text-center text-xs">
-          Free cancellation up to 24 hours before your booking.
-        </p>
-      </div>
-    </Card>
-  );
-}
-
 
 function DetailsSkeleton() {
   return (

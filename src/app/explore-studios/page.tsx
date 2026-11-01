@@ -1,4 +1,6 @@
-import React, { Suspense } from "react";
+
+
+import { Suspense } from "react";
 import Link from "next/link";
 import { ArrowRight, MapPin, Star, Users } from "lucide-react";
 
@@ -37,6 +39,7 @@ async function StudiosGrid() {
 }
 
 function StudioCard({ studio }: { studio: Studio }) {
+
   const rating = getRating(studio._id);
 
   return (

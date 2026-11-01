@@ -25,6 +25,7 @@ interface BookingDialogProps {
   securityDeposit: number;
   triggerLabel?: string;
   className?: string;
+  user?: string
 }
 
 const DURATION_OPTIONS = ["1", "2", "3", "4", "6", "8", "12"];
@@ -38,6 +39,7 @@ export function BookingDialog({
   securityDeposit,
   triggerLabel = "Book Workspace Now",
   className,
+  user
 }: BookingDialogProps) {
   const [open, setOpen] = useState(false);
   const [date, setDate] = useState("");
@@ -48,19 +50,50 @@ export function BookingDialog({
   const subtotal = hoursNum * hourlyRate;
   const total = subtotal + securityDeposit;
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    if (!date) {
-      toast.add({ type: "error", title: "Please pick a booking date." });
-      return;
+  // function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  //   event.preventDefault();
+  //   if (!date) {
+  //     toast.add({ type: "error", title: "Please pick a booking date." });
+  //     return;
+  //   }
+  //   toast.add({
+  //     type: "success",
+  //     title: "Booking confirmed!",
+  //     description: `${title} — ${date} at ${time} for ${hoursNum}h. Total due: $${total} (incl. deposit).`,
+  //   });
+  //   setOpen(false);
+  // }
+
+  const handleBooking = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const data = {
+      email: user,
+      
+      studioId: studioId,
+      time,
+      date,
+      hours
+   
+    };
+
+    try {
+      const res = await fetch("http://localhost:8000/studio/book", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      const bookingData = await res.json();
+      console.log(bookingData);
+
+      if(bookingData){
+        setOpen(false)
+      }
+    } catch (error) {
+      console.error("Booking request failed:", error);
     }
-    toast.add({
-      type: "success",
-      title: "Booking confirmed!",
-      description: `${title} — ${date} at ${time} for ${hoursNum}h. Total due: $${total} (incl. deposit).`,
-    });
-    setOpen(false);
-  }
+  };
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -75,7 +108,7 @@ export function BookingDialog({
             {studioId.slice(-6)}
           </DialogDescription>
         </DialogHeader>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-3">
+        <form onSubmit={handleBooking} className="flex flex-col gap-3">
           <div className="grid grid-cols-2 gap-3">
             <div className="flex flex-col gap-1.5">
               <Label htmlFor="booking-date">Date</Label>
