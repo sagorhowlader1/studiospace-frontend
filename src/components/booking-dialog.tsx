@@ -50,19 +50,7 @@ export function BookingDialog({
   const subtotal = hoursNum * hourlyRate;
   const total = subtotal + securityDeposit;
 
-  // function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-  //   event.preventDefault();
-  //   if (!date) {
-  //     toast.add({ type: "error", title: "Please pick a booking date." });
-  //     return;
-  //   }
-  //   toast.add({
-  //     type: "success",
-  //     title: "Booking confirmed!",
-  //     description: `${title} — ${date} at ${time} for ${hoursNum}h. Total due: $${total} (incl. deposit).`,
-  //   });
-  //   setOpen(false);
-  // }
+
 
   const handleBooking = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -91,7 +79,7 @@ export function BookingDialog({
     setOpen(false);
 
     try {
-      const res = await fetch("http://localhost:8000/studio/book", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/studio/book`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

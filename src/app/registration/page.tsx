@@ -63,8 +63,6 @@ export function RegistrationPage() {
         }
     }
 
-
-
     const handleGoogleRegistration = async () => {
         const data = await authClient.signIn.social({
             provider: "google",

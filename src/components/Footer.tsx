@@ -9,6 +9,9 @@ import { NewsletterForm } from "@/components/newsletter-form";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
+const privacyLinks = [
+  { label: "Privacy Policy", href: "/privacy-policy" }
+]
 const trustBadges = [
   {
     icon: ShieldCheck,
@@ -33,7 +36,10 @@ const exploreLinks = [
   // { label: "All Workspaces", href: "/studios" },
   { label: "How It Works", href: "/#how-it-works" },
   { label: "About Us", href: "/#about-us" },
+  
 ]
+
+
 
 const categoryLinks = [
   { label: "Photo Studios", href: "/explore-studios" },
@@ -74,10 +80,9 @@ function YoutubeIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 const socialLinks = [
-  { Icon: YoutubeIcon, label: "YouTube", href: "https://youtube.com" },
-  { Icon: InstagramIcon, label: "Instagram", href: "https://instagram.com" },
   { Icon: XIcon, label: "X (Twitter)", href: "https://x.com" },
 ]
+
 
 function Logo() {
   return (
@@ -210,11 +215,28 @@ export function Footer() {
           <Separator className="my-10" />
           <div className="text-muted-foreground flex flex-col items-center justify-between gap-3 text-center sm:flex-row sm:justify-between sm:text-left">
             <p className="text-xs">© {date} StudioSpace. All rights reserved.</p>
-            <nav aria-label="Legal" className="flex items-center gap-6 text-xs">
-              <Link href="/" className="hover:text-brand transition-colors">
+            
+             <nav aria-label="privacyLinks">
+
+              <ul className="mt-5 space-y-3">
+                {privacyLinks.map((item) => (
+                  <li key={item.label}>
+                    <Link
+                      href={item.href}
+                      className="text-muted-foreground hover:text-brand text-sm transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                    
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            {/* <nav aria-label="Legal" className="flex items-center gap-6 text-xs">
+              <Link href="/privacy-policy" className="hover:text-brand transition-colors">
                 Privacy Policy
               </Link>
-            </nav>
+            </nav> */}
           </div>
         </div>
       </div>

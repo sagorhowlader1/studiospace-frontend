@@ -35,7 +35,7 @@ export default function DeleteStudioButton({
 
         try {
             const res = await fetch(
-                `http://localhost:8000/my-listings/${studioId}`,
+                `${process.env.NEXT_PUBLIC_API_URL}/my-listings/${studioId}`,
                 {
                     method: "DELETE",
                     headers: {

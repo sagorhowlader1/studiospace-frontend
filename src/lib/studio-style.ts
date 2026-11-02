@@ -84,7 +84,8 @@ export function getAmenityIcon(amenity: string): LucideIcon {
   );
 }
 
-export const STUDIOS_API = "http://localhost:8000/explore-studios"
+export const STUDIOS_API = `${process.env.NEXT_PUBLIC_API_URL}/explore-studios`
+
 
 export async function fetchStudios(): Promise<Studio[]> {
   try {

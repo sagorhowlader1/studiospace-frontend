@@ -27,11 +27,11 @@ const MyBookingsPage = async () => {
   const user = session?.user;
 
   if (!user) {
-    redirect("/signin");
+    redirect("/login");
   }
 
   const res = await fetch(
-    `http://localhost:8000/my-bookings/${user.email}`
+    `${process.env.NEXT_PUBLIC_API_URL}/my-bookings/${user.email}`
   );
 
   const data = await res.json();

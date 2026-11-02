@@ -27,7 +27,7 @@ export default function CancelBookingButton({
 
         try {
             const res = await fetch(
-                `http://localhost:8000/my-bookings/${bookingId}/cancel`,
+                `${process.env.NEXT_PUBLIC_API_URL}/my-bookings/${bookingId}/cancel`,
                 {
                     method: "PATCH",
                 }

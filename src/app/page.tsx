@@ -6,6 +6,7 @@ import HowItWorks from "@/components/How-it-works";
 import AboutUs from "@/components/About-us";
 import FeaturedStudiosPage from "@/components/Featured-studios";
 
+
 export default function Home() {
   return (
     <div className="relative">

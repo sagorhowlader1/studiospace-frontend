@@ -106,7 +106,7 @@ export default function HowItWorks() {
         {/* CTA */}
         <div className="mt-12 flex justify-center sm:mt-16">
           <Button
-            render={<Link href="/studios" />}
+            render={<Link href="/explore-studios" />}
             className="h-11 rounded-lg bg-orange-500 px-7 text-sm font-semibold text-white hover:bg-orange-600"
           >
             Start Exploring Workspaces

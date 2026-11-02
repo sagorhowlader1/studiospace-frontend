@@ -46,7 +46,7 @@ export default function AboutUs() {
               Trust, Safety &amp; Peace of Mind
             </p>
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-balance sm:mt-5 sm:text-4xl lg:text-5xl">
-              Built on Uncompromising Protection for Both Hosts &amp; Creators
+              Built on Uncompromising Protection for Explore Studios
             </h2>
             <p className="mt-5 max-w-lg text-sm leading-relaxed text-muted-foreground sm:mt-6 sm:text-base">
               We understand creative production is unpredictable. StudioSpace
@@ -55,17 +55,12 @@ export default function AboutUs() {
               focus entirely on craft.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+              
               <Button
-                render={<Link href="/become-a-host" />}
-                className="h-11 w-full rounded-lg bg-ink px-5 text-sm font-semibold text-white hover:bg-ink/90 sm:w-auto sm:px-6 dark:bg-white dark:text-ink dark:hover:bg-white/90"
-              >
-                Become a Verified Host
-              </Button>
-              <Button
-                render={<Link href="/studios" />}
+                render={<Link href="/explore-studios" />}
                 className="h-11 w-full rounded-lg border border-foreground/15 bg-background px-5 text-sm font-medium text-foreground hover:bg-muted sm:w-auto sm:px-6 dark:border-transparent dark:bg-white dark:text-ink dark:hover:bg-white/90"
               >
-                Browse Protected Spaces
+                Explore Studios
               </Button>
             </div>
           </div>

@@ -1,7 +1,6 @@
 
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
@@ -72,7 +71,7 @@ const FeaturedStudiosPage = () => {
         const fetchStudios = async () => {
             try {
                 const res = await fetch(
-                    "http://localhost:8000/featured-studios"
+                    `${process.env.NEXT_PUBLIC_API_URL}/featured-studios`
                 );
 
                 if (!res.ok) {

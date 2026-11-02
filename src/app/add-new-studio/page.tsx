@@ -105,7 +105,7 @@ export function AddNewStudioPage() {
         setIsSubmitting(true)
         try {
             // TODO: swap this stub for the real API call once the backend exists, e.g.
-            const res = await fetch("http://localhost:8000/add-new-studio", {
+            const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/add-new-studio`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(studio),

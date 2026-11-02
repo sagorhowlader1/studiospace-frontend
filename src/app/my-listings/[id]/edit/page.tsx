@@ -71,7 +71,7 @@ export default function EditStudioPage() {
         const fetchStudio = async () => {
             try {
                 const res = await fetch(
-                    `http://localhost:8000/my-listings/edit/${id}`
+                    `${process.env.NEXT_PUBLIC_API_URL}/my-listings/edit/${id}`
                 );
 
                 if (!res.ok) {
@@ -126,7 +126,7 @@ export default function EditStudioPage() {
 
         try {
             const res = await fetch(
-                `http://localhost:8000/my-listings/${id}`,
+                `${process.env.NEXT_PUBLIC_API_URL}/my-listings/${id}`,
                 {
                     method: "PATCH",
                     headers: {
