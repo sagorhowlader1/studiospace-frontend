@@ -69,13 +69,26 @@ export function BookingDialog({
 
     const data = {
       email: user,
-      
-      studioId: studioId,
+      title,
       time,
       date,
-      hours
+      hours,
+      location
    
     };
+
+
+
+     if (!date) {
+      toast.add({ type: "error", title: "Please pick a booking date." });
+      return;
+    }
+    toast.add({
+      type: "success",
+      title: "Booking confirmed!",
+      description: `${title} — ${date} at ${time} for ${hoursNum}h. Total due: $${total} (incl. deposit).`,
+    });
+    setOpen(false);
 
     try {
       const res = await fetch("http://localhost:8000/studio/book", {

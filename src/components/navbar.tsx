@@ -100,6 +100,7 @@ export function Navbar() {
           <NavLink href="/explore-studios">Explore Studios</NavLink>
           <NavLink href="/#how-it-works">How It Works</NavLink>
           <NavLink href="/#about-us">About Us</NavLink>
+          
 
         </div>
 

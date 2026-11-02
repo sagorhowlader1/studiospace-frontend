@@ -84,12 +84,17 @@ export function getAmenityIcon(amenity: string): LucideIcon {
   );
 }
 
-export const STUDIOS_API = "http://localhost:8000/explore-studios";
+export const STUDIOS_API = "http://localhost:8000/explore-studios"
 
 export async function fetchStudios(): Promise<Studio[]> {
   try {
-    const res = await fetch(STUDIOS_API);
-    if (!res.ok) return [];
+    const res = await fetch(STUDIOS_API,)
+//     {
+//     headers: {
+//     authorization: 'user logged in'
+//   }
+// }
+  if (!res.ok) return [];
     return (await res.json()) as Studio[];
   } catch {
     return [];

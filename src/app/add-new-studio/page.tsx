@@ -117,7 +117,7 @@ export function AddNewStudioPage() {
                 title: "Studio added successfully.",
                 description: `${studio.title} is now listed on StudioSpace.`,
             })
-            router.push("/my-studio-listings")
+            router.push("/my-listings")
         } catch {
             toast.add({
                 type: "error",

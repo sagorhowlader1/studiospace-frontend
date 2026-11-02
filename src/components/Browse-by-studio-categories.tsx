@@ -1,8 +1,8 @@
-import  { Suspense } from "react";
+import { Suspense } from "react";
 import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import {
   Aperture,
-  ArrowRight,
   Clapperboard,
   Mic,
   Music2,
@@ -97,7 +97,7 @@ function spaceCount(count: number) {
   return `${count} ${count === 1 ? "Space" : "Spaces"}`
 }
 
-async function CategoriesStrip() {
+async function CategoriesGrid() {
   const studios = await fetchStudios()
 
   // Count live listings per category, then render in the curated order.
@@ -123,14 +123,14 @@ async function CategoriesStrip() {
   }
 
   return (
-    <div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:px-0 [&::-webkit-scrollbar]:hidden">
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
       {cards.map(({ icon: Icon, chip, title, blurb, count }) => (
         <Link
           key={title}
           href="/explore-studios"
-          className="group w-56 shrink-0 snap-start sm:w-auto sm:flex-1"
+          className="group"
         >
-          <Card className="flex h-full flex-col gap-0 p-4 transition-all group-hover:-translate-y-0.5 group-hover:shadow-md">
+          <Card className="h-full flex flex-col gap-0 p-4 transition-all group-hover:-translate-y-0.5 group-hover:shadow-md">
             <span
               className={`grid size-10 place-items-center rounded-xl ${chip}`}
             >
@@ -140,8 +140,7 @@ async function CategoriesStrip() {
             <p className="text-muted-foreground mt-1 text-xs leading-relaxed line-clamp-2">
               {blurb}
             </p>
-            {/* <Separator className="mt-auto mb-3" /> */}
-            <div className="text-muted-foreground flex items-center justify-between text-xs">
+            <div className="mt-auto text-muted-foreground flex items-center justify-between text-xs">
               <span>{spaceCount(count)}</span>
               <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
             </div>
@@ -152,11 +151,11 @@ async function CategoriesStrip() {
   )
 }
 
-function CategoriesStripSkeleton() {
+function CategoriesGridSkeleton() {
   return (
-    <div className="-mx-4 flex gap-4 overflow-x-auto px-4 pb-2 sm:mx-0 sm:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <Skeleton key={i} className="h-44 w-56 shrink-0 rounded-xl sm:w-auto sm:flex-1" />
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+      {Array.from({ length: 8 }).map((_, i) => (
+        <Skeleton key={i} className="h-44 shrink-0 rounded-xl" />
       ))}
     </div>
   )
@@ -181,8 +180,8 @@ export default function BrowseByStudioCategories() {
             <ArrowRight className="size-4" />
           </Link>
         </div>
-        <Suspense fallback={<CategoriesStripSkeleton />}>
-          <CategoriesStrip />
+        <Suspense fallback={<CategoriesGridSkeleton />}>
+          <CategoriesGrid />
         </Suspense>
       </div>
     </section>

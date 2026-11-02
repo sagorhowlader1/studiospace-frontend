@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+
 import { ShieldCheck, Star, Users } from "lucide-react";
 
 import { BookingDialog } from "@/components/booking-dialog";
