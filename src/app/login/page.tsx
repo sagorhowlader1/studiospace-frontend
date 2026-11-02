@@ -4,11 +4,10 @@ import { Button } from "@/components/ui/button"
 import {
     Card,
     CardContent,
-    CardDescription,
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
-import { Description} from "@heroui/react";
+import { Description } from "@heroui/react";
 import {
     Field,
     FieldDescription,
@@ -20,7 +19,7 @@ import { Input } from "@/components/ui/input"
 import { toast } from "@/components/ui/toast"
 import { authClient } from "@/lib/auth-client"
 import Link from "next/link"
-import { redirect } from "next/navigation"
+import { useRouter } from "next/navigation"
 
 
 
@@ -36,38 +35,52 @@ function GoogleIcon({ className }: { className?: string }) {
 }
 
 export function LoginPage() {
-    const handleLogin = async (e: React.SubmitEvent<HTMLElement>) => {
+    const router = useRouter()
+
+    const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
 
-        const formData = new FormData(e.target)
+        const formData = new FormData(e.currentTarget)
 
-        const user = Object.fromEntries(formData.entries()) as { email: string, password: string }
-
-        const { data, error } = await authClient.signIn.email({
-            ...user,
-        })
-
-        if (data) {
-            toast.add({
-                type: 'success',
-                title: 'Login Successfully.'
-            })
-            redirect('/')
+        const user = {
+            email: formData.get("email") as string,
+            password: formData.get("password") as string,
         }
 
-        console.log(user)
-        if (error) {
+        try {
+            const { data, error } = await authClient.signIn.email(user)
+
+            if (error) {
+                toast.add({
+                    type: 'error',
+                    title: error.message || 'Login failed. Please try again!'
+                })
+                return
+            }
+
+            if (data) {
+                toast.add({
+                    type: 'success',
+                    title: 'Login Successfully.'
+                })
+
+                router.push('/')
+                router.refresh()
+            }
+
+        } catch (error) {
+            console.error("Login Error:", error)
+
             toast.add({
                 type: 'error',
-                title: 'Login failed. Please try again!'
+                title: 'Something went wrong!'
             })
-
         }
     }
 
 
-    const handleGoogleLogin = async() => {
-        const data = await authClient.signIn.social({
+    const handleGoogleLogin = async () => {
+        await authClient.signIn.social({
             provider: "google"
         })
     }
@@ -77,7 +90,7 @@ export function LoginPage() {
             <Card className="w-full max-w-sm">
                 <CardHeader className="text-center">
                     <CardTitle className="text-xl">LogIn</CardTitle>
-                    
+
                 </CardHeader>
                 <CardContent>
                     <form onSubmit={handleLogin}>
@@ -87,13 +100,14 @@ export function LoginPage() {
                                 <Input
                                     id="email"
                                     type="email"
+                                    name="email"
                                     placeholder="m@example.com"
                                     required
                                 />
                             </Field>
                             <Field>
                                 <FieldLabel htmlFor="password">Password</FieldLabel>
-                                <Input id="password" type="password" placeholder="password" required />
+                                <Input id="password" type="password" name="password" placeholder="password" required />
                                 <Description className="text-black  dark:text-white">Must be at least 6 characters with 1 uppercase and 1 lowercase</Description>
                             </Field>
                             <Field>

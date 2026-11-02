@@ -20,9 +20,9 @@ import { Input } from "@/components/ui/input"
 import { toast } from "@/components/ui/toast"
 import { authClient } from "@/lib/auth-client"
 import Link from "next/link"
-import { redirect } from "next/navigation"
+import { useRouter } from "next/navigation"
 
-import { Description} from "@heroui/react";
+import { Description } from "@heroui/react";
 
 function GoogleIcon({ className }: { className?: string }) {
     return (
@@ -36,39 +36,59 @@ function GoogleIcon({ className }: { className?: string }) {
 }
 
 export function RegistrationPage() {
-    const handleRegistration = async (e: React.SubmitEvent<HTMLElement>) => {
+    const router = useRouter()
+
+    const handleRegistration = async (
+        e: React.FormEvent<HTMLFormElement>
+    ) => {
         e.preventDefault()
 
-        const formData = new FormData(e.target)
-        const user = Object.fromEntries(formData.entries()) as { name: string, image: string, email: string, password: string }
+        const formData = new FormData(e.currentTarget)
 
-        const { data, error } = await authClient.signUp.email({
-            ...user,
-        })
-
-        console.log(user)
-        if (data) {
-            toast.add({
-                type: 'success',
-                title: 'Registration Successfully.'
-            })
-            redirect('/')
+        const user = {
+            name: formData.get("name") as string,
+            image: formData.get("image") as string,
+            email: formData.get("email") as string,
+            password: formData.get("password") as string,
         }
 
-        if (error) {
+        try {
+            const { data, error } = await authClient.signUp.email(user)
+
+            if (error) {
+                toast.add({
+                    type: "error",
+                    title: error.message || "Registration failed!"
+                })
+                return
+            }
+
+            if (data) {
+                toast.add({
+                    type: "success",
+                    title: "Registration Successfully."
+                })
+
+                router.push("/")
+                router.refresh()
+            }
+
+        } catch (error) {
+            console.error("Registration Error:", error)
+
             toast.add({
-                type: 'error',
-                title: 'Something went wrong, Please try again!'
+                type: "error",
+                title: "Something went wrong!"
             })
         }
     }
 
     const handleGoogleRegistration = async () => {
-        const data = await authClient.signIn.social({
+        await authClient.signIn.social({
             provider: "google",
-        });
+            callbackURL: "/"
+        })
 
-        
     }
 
     return (
@@ -92,7 +112,7 @@ export function RegistrationPage() {
                                 />
                             </Field>
                             <Field>
-                                <FieldLabel htmlFor="name">PhotoURL</FieldLabel>
+                                <FieldLabel htmlFor="image">PhotoURL</FieldLabel>
                                 <Input
                                     id="image"
                                     type="url"
@@ -135,7 +155,7 @@ export function RegistrationPage() {
                                     </FieldSeparator>
                                 </div>
                                 <Field className="pb-6">
-                                    <Button onClick={handleGoogleRegistration} className="h-10 w-full bg-white cursor-pointer text-ink ring-1 ring-foreground/10 hover:bg-white/90 dark:bg-black dark:text-white">
+                                    <Button onClick={handleGoogleRegistration} type="button" className="h-10 w-full bg-white cursor-pointer text-ink ring-1 ring-foreground/10 hover:bg-white/90 dark:bg-black dark:text-white">
                                         <GoogleIcon className="size-4" />
                                         Login with Google
                                     </Button>
