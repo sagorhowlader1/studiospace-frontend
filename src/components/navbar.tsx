@@ -4,7 +4,7 @@ import * as React from "react"
 import Link from "next/link"
 import { Menu } from "lucide-react"
 
-import { StudioSpaceLogo } from "@/components/logo"
+import { StudioSpaceLogo, StudioSpaceMark } from "@/components/logo"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { Button } from "@/components/ui/button"
 
@@ -79,12 +79,7 @@ export function Navbar() {
     <header className="bg-background dark:bg-ink sticky inset-x-0 top-0 z-50 border-b border-border">
       <nav className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2">
-          <span className="bg-brand grid size-8 place-items-center rounded-lg text-white">
-            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="size-5">
-              <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="2" />
-              <circle cx="12" cy="12" r="3" fill="currentColor" />
-            </svg>
-          </span>
+          <StudioSpaceMark className="size-8" />
           <span className="text-lg font-bold tracking-tight text-foreground">
             Studio<span className="text-brand">Space</span>
           </span>

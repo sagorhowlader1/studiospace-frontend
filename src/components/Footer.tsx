@@ -8,6 +8,7 @@ import {
 import { NewsletterForm } from "@/components/newsletter-form";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { StudioSpaceMark } from "@/components/logo";
 
 const privacyLinks = [
   { label: "Privacy Policy", href: "/privacy-policy" }
@@ -87,12 +88,7 @@ const socialLinks = [
 function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2">
-      <span className="bg-brand grid size-8 place-items-center rounded-lg text-white">
-        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true" className="size-5">
-          <circle cx="12" cy="12" r="8.5" stroke="currentColor" strokeWidth="2" />
-          <circle cx="12" cy="12" r="3" fill="currentColor" />
-        </svg>
-      </span>
+      <StudioSpaceMark className="size-8" />
       <span className="text-lg font-bold tracking-tight text-foreground">
         Studio<span className="text-brand">Space</span>
       </span>
