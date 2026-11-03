@@ -1,6 +1,12 @@
-# StudioSpace Frontend
+# StudioSpace Frontend And Backend
 
 Frontend for StudioSpace, built with Next.js 16 and React 19.
+
+## 📸 Project Preview
+
+### Homepage
+
+![StudioSpace Homepage](./public/studiospace.png)
 
 ## Tech Stack
 
@@ -17,7 +23,8 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Frontend Open [https://studiospace-frontend-three.vercel.app]
+
 
 ## Scripts
 
