@@ -9,6 +9,8 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { headers } from "next/headers";
+
 import {
   Carousel,
   CarouselContent,
@@ -28,7 +30,10 @@ import {
 
 export default async function ExploreStudiosDetailsPage({
   params,
-}: PageProps<"/explore-studios/[id]">) {
+}: PageProps<"/explore-studios/[id]">
+) {
+  const headersList = await headers()
+  const token = await headersList.get('authorization')
   const { id } = await params;
 
   return (
