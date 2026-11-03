@@ -17,17 +17,14 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { fetchStudios } from "@/lib/studio-style";
 
 interface CategoryConfig {
-  /** The category name used by the API's explore-studios payload. */
   match: string;
   title: string;
   icon: LucideIcon;
-  // Chip colors with dark-mode counterparts.
   chip: string;
   blurb: string;
 }
 
-// Curated copy for the disciplines we know about. Categories present in the
-// API but missing here fall back to the DEFAULT config.
+
 const CATEGORY_CONFIG: CategoryConfig[] = [
   {
     match: "Photo Studio",

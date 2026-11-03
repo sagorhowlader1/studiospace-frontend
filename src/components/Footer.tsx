@@ -62,23 +62,6 @@ function XIcon(props: React.SVGProps<SVGSVGElement>) {
   )
 }
 
-function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>
-      <rect x="2.5" y="2.5" width="19" height="19" rx="5.5" />
-      <circle cx="12" cy="12" r="4.2" />
-      <circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none" />
-    </svg>
-  )
-}
-
-function YoutubeIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>
-      <path d="M23 12s0-3.8-.5-5.5a2.8 2.8 0 0 0-2-2C18.9 4 12 4 12 4s-6.9 0-8.5.5a2.8 2.8 0 0 0-2 2C1 8.2 1 12 1 12s0 3.8.5 5.5a2.8 2.8 0 0 0 2 2c1.6.5 8.5.5 8.5.5s6.9 0 8.5-.5a2.8 2.8 0 0 0 2-2c.5-1.7.5-5.5.5-5.5ZM9.8 15.5v-7l6.2 3.5-6.2 3.5Z" />
-    </svg>
-  )
-}
 
 const socialLinks = [
   { Icon: XIcon, label: "X (Twitter)", href: "https://x.com" },
@@ -228,11 +211,7 @@ export function Footer() {
                 ))}
               </ul>
             </nav>
-            {/* <nav aria-label="Legal" className="flex items-center gap-6 text-xs">
-              <Link href="/privacy-policy" className="hover:text-brand transition-colors">
-                Privacy Policy
-              </Link>
-            </nav> */}
+           
           </div>
         </div>
       </div>

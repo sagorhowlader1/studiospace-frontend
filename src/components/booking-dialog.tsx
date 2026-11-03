@@ -65,8 +65,6 @@ export function BookingDialog({
    
     };
 
-
-
      if (!date) {
       toast.add({ type: "error", title: "Please pick a booking date." });
       return;
