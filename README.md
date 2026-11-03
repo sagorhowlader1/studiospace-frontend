@@ -7,7 +7,8 @@
 
 ![StudioSpace Homepage](./public/studiospace.png)
 
-Frontend Open [https://studiospace-frontend-three.vercel.app] in your browser to see the application.
+Open [https://studiospace-frontend-three.vercel.app] in your browser to see the application.
+
 
 
 ## Technologies Used
@@ -23,11 +24,13 @@ Frontend Open [https://studiospace-frontend-three.vercel.app] in your browser to
 - **CSS3**
 
 
+
 ## Backend
 
 - **Node.js**
 - **Express.js**
 - **MongoDB**
+
 
 
 ## Authentication & Tools
@@ -36,13 +39,6 @@ Frontend Open [https://studiospace-frontend-three.vercel.app] in your browser to
 - **Git & GitHub**
 - **Vercel**
 
-## Tech Stack
-
-- **Next.js 16.4.3** (App Router) + **React 19.3.0**
-- **Tailwind CSS v4** — theme tokens in `src/app/globals.css`
-- **shadcn** (base-nova style) with **Base UI** primitives in `src/components/ui`
-- **Better Auth** + **MongoDB** for authentication
-- **Shiki** for syntax highlighting, **Recharts** for charts, **Embla** for carousels
 
 ## Getting Started
 
@@ -61,6 +57,7 @@ npm run dev
 | `npm run build` | Production build (also runs TypeScript) |
 | `npm start` | Start production server |
 | `npm run lint` | Run ESLint |
+
 
 ## Structure
 
