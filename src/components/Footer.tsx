@@ -34,7 +34,6 @@ const trustBadges = [
 const exploreLinks = [
   { label: "Home", href: "/" },
   { label: "Explore Studios", href: "/explore-studios" },
-  // { label: "All Workspaces", href: "/studios" },
   { label: "How It Works", href: "/#how-it-works" },
   { label: "About Us", href: "/#about-us" },
   
@@ -64,7 +63,7 @@ function XIcon(props: React.SVGProps<SVGSVGElement>) {
 
 
 const socialLinks = [
-  { Icon: XIcon, label: "X (Twitter)", href: "https://x.com" },
+  { Icon: XIcon, label: "X (Twitter)", href: "https://x.com/sagorhowlader01" },
 ]
 
 
@@ -181,7 +180,7 @@ export function Footer() {
               <p className="text-muted-foreground mt-5 text-sm">
                 Need assistance? Email support:{" "}
                 <a
-                  href="mailto:support@studiospace.io"
+                  href="mailto:sagorhowlader.edu@gmail.com"
                   className="font-bold text-foreground underline-offset-4 hover:text-brand hover:underline"
                 >
                   support@studiospace.io

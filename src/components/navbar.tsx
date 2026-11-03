@@ -62,8 +62,6 @@ function NavLink({
   )
 }
 
-
-
 export function Navbar() {
   const { data: session } = authClient.useSession()
 
@@ -86,8 +84,6 @@ export function Navbar() {
         </Link>
 
         {/* Desktop nav */}
-
-
         <div className="hidden items-center gap-8 lg:flex">
           <NavLink href="/" active>
             Home
@@ -95,60 +91,11 @@ export function Navbar() {
           <NavLink href="/explore-studios">Explore Studios</NavLink>
           <NavLink href="/#how-it-works">How It Works</NavLink>
           <NavLink href="/#about-us">About Us</NavLink>
-          
-
         </div>
 
         {/* Actions */}
         <div className="flex items-center gap-3">
-
           <ThemeToggle />
-
-          {/* {
-            user ? <div className="hidden items-end gap-4 lg:flex">
-              <Popover >
-                <PopoverTrigger render={<Button className={"cursor-pointer"} variant={"outline"}><Avatar>
-                  <AvatarImage referrerPolicy="no-referrer" src={user?.image as string} />
-                  <AvatarFallback>{user?.name.charAt(0)}</AvatarFallback>
-                </Avatar>{user?.name.split(" ")[0]} <FiChevronDown />
-                </Button>}>
-                </PopoverTrigger>
-                <PopoverContent>
-                  <PopoverHeader>
-                    <p className="text-gray-300">Signed in as</p>
-                    <PopoverTitle>{user?.name}</PopoverTitle>
-                    <PopoverDescription>{user?.email}</PopoverDescription>
-
-                    <Link href={"/add-new-studio"} className="my-2 flex items-center gap-1"><IoIosAddCircleOutline />
-                      Add New Studio
-                    </Link>
-
-                    <Link href={"/my-listings"} className="my-2 flex items-center gap-1"><FaClipboardList />
-                      My Studio Listings
-                    </Link>
-
-                    <Link href={"/my-bookings"} className="my-2 flex items-center gap-1"><LuBookText />
-                      My Bookings
-                    </Link>
-
-                    <Button onClick={handleSignout} className="mr-40 cursor-pointer" variant={'destructive'}><FaArrowRightToBracket /> SignOut</Button>
-                  </PopoverHeader>
-                </PopoverContent>
-              </Popover>
-            </div> : <>
-              <div className="hidden items-end gap-4 lg:flex">
-                <NavLink href="/login" className="rounded-md px-3  py-2.5 text-foreground" onClick={() => setOpen(false)}>
-                  Login
-                </NavLink>
-
-                <NavLink href="/registration" className="rounded-md  py-2.5 text-foreground" onClick={() => setOpen(false)}>
-                  Registration
-                </NavLink>
-              </div>
-            </>
-          } */}
-
-
 
           {/* -----------hidden----------- */} 
 
@@ -195,8 +142,6 @@ export function Navbar() {
           </div>
 
           {/* --------------------------------- */}
-
-
 
           {/* Mobile menu */}
           <Sheet open={open} onOpenChange={setOpen}>
@@ -259,8 +204,6 @@ export function Navbar() {
                         <Link href={"/my-bookings"} className="my-2 flex items-center gap-1"><LuBookText />
                           My Bookings
                         </Link>
-
-
 
                         <Button onClick={handleSignout} className="mr-40 cursor-pointer" variant={'destructive'}><FaArrowRightToBracket /> SignOut</Button>
                       </PopoverHeader>

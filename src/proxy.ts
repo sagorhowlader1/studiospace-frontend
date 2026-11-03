@@ -18,5 +18,5 @@ export async function proxy(request: NextRequest) {
 
 
 export const config = {
-  matcher: ['/explore-studios/:path'],
+  matcher: ['/explore-studios/:path', '/privacy-policy'],
 }
