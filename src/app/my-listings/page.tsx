@@ -139,8 +139,11 @@ const MyListingsPage = async () => {
                     <Link
                       href={`/my-listings/${studio._id}/edit`}
                     >
+                      <p className="flex items-center dark:bg-gray-800/60 bg-gray-300/20 rounded justify-center px-1.5 py-1">
+
                       <Pencil className="h-4 w-4 mr-2" />
                       Update
+                      </p>
                     </Link>
 
 

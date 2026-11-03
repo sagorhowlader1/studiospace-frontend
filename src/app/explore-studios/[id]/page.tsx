@@ -63,7 +63,7 @@ async function StudioDetails({ id }: { id: string }) {
         <Header studio={studio} rating={rating} reviewCount={reviewCount} />
         <SpecsGrid studio={studio} />
         <section>
-          <SectionTitle>About this workspace</SectionTitle>
+          <SectionTitle >About this workspace</SectionTitle>
           <p className="text-muted-foreground text-sm leading-relaxed">
             {studio.overview}
           </p>

@@ -76,7 +76,7 @@ export default function DeleteStudioButton({
                 render={
                     <Button
                         variant="outline"
-                        className="text-red-600 border-red-200 hover:bg-red-50"
+                        className="text-red-600 border-red-200 cursor-pointer hover:bg-red-50"
                     />
                 }
             >
@@ -96,9 +96,11 @@ export default function DeleteStudioButton({
                     </AlertDialogDescription>
                 </AlertDialogHeader>
 
-                <AlertDialogFooter>
+                <AlertDialogFooter >
                     <AlertDialogCancel disabled={loading}>
-                        Cancel
+                        <p className="cursor-pointer">
+                            Cancel
+                        </p>
                     </AlertDialogCancel>
 
                     <AlertDialogAction
@@ -107,7 +109,7 @@ export default function DeleteStudioButton({
                             handleDelete();
                         }}
                         disabled={loading}
-                        className="bg-red-600 hover:bg-red-700"
+                        className="bg-red-600 cursor-pointer hover:bg-red-700"
                     >
                         {loading ? "Deleting..." : "Yes, Delete"}
                     </AlertDialogAction>
